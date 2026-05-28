@@ -31,12 +31,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
         
-        {/* Compare At Badge */}
-        {hasDiscount && (
-          <span className="absolute top-3 left-3 bg-neutral-900 text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-wider uppercase">
-            İndirim
-          </span>
-        )}
+        {/* Badges Container */}
+        <div className="absolute top-3 left-3 flex flex-col space-y-1">
+          {hasDiscount && (
+            <span className="bg-red-700 text-white text-[9px] font-bold px-1.5 py-0.5 rounded tracking-wider uppercase self-start">
+              İndirim
+            </span>
+          )}
+          {product.categoryId === 'furniture' && (
+            <span className="bg-[#3D5A46] text-[#E6DFD3] text-[9px] font-semibold px-1.5 py-0.5 rounded tracking-wider uppercase self-start">
+              El Yapımı
+            </span>
+          )}
+        </div>
 
         {/* Quick Add Button Overlay */}
         <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4 px-4">
@@ -72,17 +79,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </Link>
         </div>
 
-        {/* Price & Action Link */}
         <div className="flex items-center justify-between pt-2 border-t border-neutral-50 mt-2">
-          <div className="flex items-baseline space-x-1.5">
-            <span className="text-xs font-semibold text-neutral-950">
-              {formatCurrency(displayPrice)}
-            </span>
-            {hasDiscount && (
-              <span className="text-[10px] text-neutral-400 line-through">
-                {formatCurrency(product.compareAtPrice!)}
+          <div className="flex flex-col">
+            <div className="flex items-baseline space-x-1.5">
+              <span className="text-xs font-semibold text-neutral-950">
+                {formatCurrency(displayPrice)}
               </span>
-            )}
+              {hasDiscount && (
+                <span className="text-[10px] text-neutral-400 line-through">
+                  {formatCurrency(product.compareAtPrice!)}
+                </span>
+              )}
+            </div>
+            <span className="text-[9px] text-neutral-400 font-light mt-0.5">
+              {formatCurrency(Math.round(displayPrice / 3))} x 3 Taksit
+            </span>
           </div>
           
           <Link

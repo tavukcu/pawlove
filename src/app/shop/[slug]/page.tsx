@@ -151,16 +151,22 @@ export default function ProductDetail({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Price display */}
-            <div className="flex items-baseline space-x-3 py-3 border-t border-b border-neutral-100">
-              <span className="text-2xl font-semibold text-neutral-950">
-                {formatCurrency(basePrice)}
-              </span>
-              {hasDiscount && (
-                <span className="text-sm text-neutral-400 line-through">
-                  {formatCurrency(originalPrice!)}
+            {/* Price display with installment details */}
+            <div className="flex flex-col space-y-1.5 py-3.5 border-t border-b border-neutral-100">
+              <div className="flex items-baseline space-x-3">
+                <span className="text-2xl font-semibold text-neutral-950">
+                  {formatCurrency(basePrice)}
                 </span>
-              )}
+                {hasDiscount && (
+                  <span className="text-sm text-neutral-400 line-through">
+                    {formatCurrency(originalPrice!)}
+                  </span>
+                )}
+              </div>
+              <div className="text-[11px] text-neutral-500 font-light flex items-center space-x-2">
+                <span className="bg-[#3D5A46]/10 text-[#3D5A46] px-1.5 py-0.5 rounded text-[9px] font-semibold tracking-wide uppercase">Taksit</span>
+                <span>Kredi kartlarına vade farksız <strong>3 taksit ({formatCurrency(Math.round(basePrice / 3))} x 3)</strong> seçeneği.</span>
+              </div>
             </div>
 
             {/* Short description */}
@@ -231,15 +237,23 @@ export default function ProductDetail({ params }: PageProps) {
               </button>
             </div>
 
-            {/* Trust Badges */}
-            <div className="grid grid-cols-2 gap-3 pt-6 border-t border-neutral-100 text-[11px] text-neutral-500 font-light">
+            {/* Trust Badges adapted for Turkish Customer Trust */}
+            <div className="grid grid-cols-2 gap-x-4 gap-y-3.5 pt-6 border-t border-neutral-100 text-[11px] text-neutral-500 font-light">
               <div className="flex items-center space-x-2">
-                <ShieldCheck size={16} className="text-neutral-700" strokeWidth={1.5} />
+                <ShieldCheck size={15} className="text-[#3D5A46]" strokeWidth={2} />
                 <span>2 Yıl Garanti & İade</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Truck size={16} className="text-neutral-700" strokeWidth={1.5} />
-                <span>2000 TL Üzeri Ücretsiz Kargo</span>
+                <Truck size={15} className="text-[#3D5A46]" strokeWidth={2} />
+                <span>2000 TL Üzeri Bedava Kargo</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-[13px] leading-none shrink-0">💳</span>
+                <span>Peşin Fiyatına 3 Taksit</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-[13px] leading-none shrink-0">🇹🇷</span>
+                <span>Yerli Zanaatkar Üretimi</span>
               </div>
             </div>
 

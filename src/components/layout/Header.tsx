@@ -41,11 +41,20 @@ export const Header: React.FC = () => {
 
   return (
     <>
+      {/* Top Announcement Bar for Turkish Market Trust */}
+      <div className="bg-[#3D5A46] text-[#E6DFD3] text-[10px] sm:text-xs font-medium tracking-wider py-2 px-4 text-center select-none flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+        <span>🚚 2000 TL Üzeri Ücretsiz Kargo</span>
+        <span className="opacity-30 hidden sm:inline">•</span>
+        <span>💳 Peşin Fiyatına 3 Taksit İmkanı</span>
+        <span className="opacity-30 hidden sm:inline">•</span>
+        <span>🇹🇷 Yerli Üretim & Zanaatkar El İşçiliği</span>
+      </div>
+
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/85 backdrop-blur-md border-b border-neutral-100 shadow-sm'
-            : 'bg-white/60 backdrop-blur-sm border-b border-transparent'
+            ? 'bg-white/90 backdrop-blur-md border-b border-neutral-100 shadow-sm'
+            : 'bg-white/70 backdrop-blur-sm border-b border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
